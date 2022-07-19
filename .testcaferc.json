@@ -1,0 +1,8 @@
+{
+  "pageLoadTimeout": 5000,
+  "assertionTimeout": 10000,
+  "selectorTimeout": 10000,
+  "userVariables": {
+    "baseURL": "https://www.demo.bnz.co.nz/client/"
+  }
+}

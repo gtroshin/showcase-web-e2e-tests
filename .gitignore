@@ -1,0 +1,4 @@
+node_modules/
+test_results/
+screenshots_of_fails/
+videos_of_fails/
