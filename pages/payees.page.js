@@ -1,5 +1,5 @@
 import {t, Selector, ClientFunction } from 'testcafe';
-import { getLocation } from '../utilities';
+import { getLocation, isAscending, isDescending } from '../utilities';
 
 class Payees {
     constructor () {
@@ -14,10 +14,13 @@ class Payees {
         this.suffixInput = Selector('input#apm-suffix');
         this.saveButton = Selector('button.Button--primary');
         this.successMessage = Selector('span.message').withText('Payee added');
+        this.nameCell = Selector('span.js-payee-name');
         this.name = x => Selector('span.js-payee-name').withText(x);
         this.nameTooltipMessage = Selector('p.js-tooltip-text').withText(
             'Payee Name is a required field. Please complete to continue.');
         this.errorMessage = Selector('div.error-header');
+        this.buttonSortAscendingOrder = Selector('svg.IconChevronDownSolid');
+        this.buttonSortDescendingOrder = Selector('svg.IconChevronUpSolid');
     }
 
     async loaded() {
@@ -49,6 +52,22 @@ class Payees {
         await t 
             .expect(this.successMessage.visible).ok({ timeout: 5000 })
             .expect(this.name(payeeName).visible).ok()
+    }
+
+    async verifySortingOrder(checkAscending=true) {
+        const cellCount = await this.nameCell.count
+        
+        for (let i = 0; i < cellCount - 1; i++) {
+            let cellText = await this.nameCell.nth(i).innerText
+            let compareCellText = await this.nameCell.nth(i + 1).innerText
+            if (checkAscending) {
+                await t.expect(isAscending([cellText.toLowerCase(), compareCellText.toLowerCase()]))
+                .ok(`${cellText} is no ascending ${compareCellText}`)
+            } else {
+                await t.expect(isDescending([cellText.toLowerCase(), compareCellText.toLowerCase()]))
+                .ok(`${cellText} is no descending ${compareCellText}`)
+            }
+        }
     }
 }
 
