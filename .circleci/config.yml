@@ -25,7 +25,7 @@ references:
       command: yarn install --frozen-lockfile
 
 jobs:
-  e2e-tests:
+  e2e-tests-firefox:
     parallelism: 3
     <<: *docker_container_config
     steps:
