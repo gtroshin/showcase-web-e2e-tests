@@ -6,7 +6,7 @@ orbs:
 references:
   docker_container_config: &docker_container_config
     docker:
-      - image: cimg/node:15.0.1-browsers
+      - image: cimg/node:16.16.0-browsers
     resource_class: large
 
   restore_yarn_cache: &restore_yarn_cache
