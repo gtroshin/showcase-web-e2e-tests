@@ -1,6 +1,6 @@
-import {t, Selector, ClientFunction } from 'testcafe';
+import { t, Selector, ClientFunction } from 'testcafe';
 import XPathSelector from '../xpath-selector';
-import { getLocation } from '../utilities';
+import getLocation from '../utilities';
 
 class Payments {
     constructor () {

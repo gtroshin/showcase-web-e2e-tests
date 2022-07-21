@@ -1,4 +1,4 @@
-import {t, Selector } from 'testcafe';
+import { t, Selector } from 'testcafe';
 import XPathSelector from '../xpath-selector';
 
 class Client {

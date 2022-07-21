@@ -1,7 +1,7 @@
 {
   "name": "showcase-web-e2e-tests",
   "version": "1.0.0",
-  "description": "Showcase Web e2e tests",
+  "description": "Showcase Web E2E Tests",
   "main": "index.js",
   "scripts": {
     "test-local": "testcafe \"chrome --no-default-browser-check --lang=en-US --disable-plugins --disable-infobars\" -c 1 --debug-on-fail tests/*",

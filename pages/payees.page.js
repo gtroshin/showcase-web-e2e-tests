@@ -1,4 +1,4 @@
-import {t, Selector, ClientFunction } from 'testcafe';
+import { t, Selector, ClientFunction } from 'testcafe';
 import { getLocation, isAscending, isDescending } from '../utilities';
 
 class Payees {
