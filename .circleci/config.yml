@@ -1,9 +1,12 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.1.0
+
 references:
   docker_container_config: &docker_container_config
     docker:
-      - image: circleci/node:12-browsers
+      - image: cimg/node:15.0.1-browsers
     resource_class: large
 
   restore_yarn_cache: &restore_yarn_cache
@@ -26,9 +29,9 @@ references:
 
 jobs:
   e2e-tests-firefox:
-    parallelism: 3
     <<: *docker_container_config
     steps:
+      - browser-tools/install-browser-tools
       - checkout
       - *restore_yarn_cache
       - *yarn_dependencies
@@ -36,8 +39,7 @@ jobs:
 
       - run:
           name: Run e2e tests
-          command: |
-            yarn 
+          command: yarn 
 
       - run:
           name: Prepare JUnit XML results
