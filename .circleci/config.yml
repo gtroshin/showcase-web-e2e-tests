@@ -38,7 +38,7 @@ jobs:
       - *save_yarn_cache
 
       - run:
-          name: Run e2e tests with Firefox
+          name: Run tests with Firefox
           command: yarn test-headless-firefox
 
       - run:
@@ -59,6 +59,37 @@ jobs:
           path: /home/circleci/project/videos_of_fails
           destination: videos_of_fails
 
+  e2e-tests-chrome:
+    <<: *docker_container_config
+    steps:
+      - browser-tools/install-chrome
+      - checkout
+      - *restore_yarn_cache
+      - *yarn_dependencies
+      - *save_yarn_cache
+
+      - run:
+          name: Run tests with Chrome
+          command: yarn test-headless-chrome
+
+      - run:
+          name: Prepare JUnit XML results
+          command: |
+            mkdir -p /home/circleci/test_results/TestCafe_HeadlessChrome
+            cp /home/circleci/project/test_results/report.xml /home/circleci/test_results/TestCafe_HeadlessChrome/report.xml
+          when: always
+
+      - store_test_results:
+          path: /home/circleci/test_results
+
+      - store_artifacts:
+          path: /home/circleci/project/screenshots_of_fails
+          destination: screenshots_of_fails
+
+      - store_artifacts:
+          path: /home/circleci/project/videos_of_fails
+          destination: videos_of_fails
+
   
 workflows:
   version: 2
@@ -66,6 +97,7 @@ workflows:
   tests:
     jobs:
       - e2e-tests-firefox
+      - e2e-tests-chrome
 
   nightly-tests:
     triggers:
@@ -77,3 +109,4 @@ workflows:
                 - master
     jobs:
       - e2e-tests-firefox
+      - e2e-tests-chrome
