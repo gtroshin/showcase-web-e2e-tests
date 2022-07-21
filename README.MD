@@ -19,6 +19,6 @@ In the project root folder, to install dependencies run:
 
     yarn
 
-To run tests with Chrome, In the project root folder run:
+To run/debug tests locally with Chrome, in the project root folder run:
 
     yarn test-local
