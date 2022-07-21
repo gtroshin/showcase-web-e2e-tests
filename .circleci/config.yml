@@ -38,8 +38,8 @@ jobs:
       - *save_yarn_cache
 
       - run:
-          name: Run e2e tests
-          command: yarn 
+          name: Run e2e tests with Firefox
+          command: yarn test-headless-firefox
 
       - run:
           name: Prepare JUnit XML results
