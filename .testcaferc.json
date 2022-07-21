@@ -3,6 +3,7 @@
   "assertionTimeout": 10000,
   "selectorTimeout": 10000,
   "userVariables": {
-    "baseURL": "https://www.demo.bnz.co.nz/client/"
+    "baseURL": "https://www.demo.bnz.co.nz/client/",
+    "paymentsURL": "https://www.demo.bnz.co.nz/client/payments/"
   }
 }
