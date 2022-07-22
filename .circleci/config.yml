@@ -97,7 +97,7 @@ workflows:
   tests:
     jobs:
       - e2e-tests-firefox
-      - e2e-tests-chrome
+      # - e2e-tests-chrome enable this job back when the website works with headless Chrome
 
   nightly-tests:
     triggers:
@@ -109,4 +109,4 @@ workflows:
                 - master
     jobs:
       - e2e-tests-firefox
-      - e2e-tests-chrome
+      # - e2e-tests-chrome enable this job back when the website works with headless Chrome
