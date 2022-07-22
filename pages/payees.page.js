@@ -1,5 +1,5 @@
 import { t, Selector, ClientFunction } from 'testcafe';
-import { getLocation, isAscending, isDescending } from '../utilities';
+import { isAscending, isDescending } from '../utilities';
 
 class Payees {
     constructor () {
@@ -25,7 +25,7 @@ class Payees {
 
     async loaded() {
         await t
-            .expect(getLocation()).contains('/client/payees')
+            .expect(this.location()).contains('/client/payees')
             .expect(this.page.visible).ok()
     }
 

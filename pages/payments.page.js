@@ -1,6 +1,5 @@
 import { t, Selector, ClientFunction } from 'testcafe';
 import XPathSelector from '../xpath-selector';
-import getLocation from '../utilities';
 
 class Payments {
     constructor () {
@@ -17,7 +16,7 @@ class Payments {
 
     async loaded() {
         await t
-            .expect(getLocation()).contains('/client/payments')
+            .expect(this.location()).contains('/client/payments')
             .expect(this.page.visible).ok()
     }
 
